@@ -11,8 +11,8 @@
       <button class="btn btn-primary">Click Me</button>
     </form>
     <div class="secondary-container flex justify-center">
-      <div class="users grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4" *ngIf="users && !isLoading; else loader">
-        <app-user-card class="h-full" [index]="index" *ngFor="let user of users; let index = index;" [user]="user"></app-user-card>
+      <div class="users grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4" *ngIf="users() && !isLoading(); else loader">
+        <app-user-card class="h-full" [index]="index" *ngFor="let user of users(); let index = index;" [user]="user"></app-user-card>
       </div>
     </div>
   </section>

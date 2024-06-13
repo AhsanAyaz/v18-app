@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IUser } from '../interfaces/user.interface';
@@ -15,11 +15,11 @@ import { LoaderComponent } from '../components/loader/loader.component';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-  users!: IUser[];
+  users = signal<IUser[]>([]);
   searchForm!: FormGroup;
   componentAlive!: boolean;
   userService = inject(UserService);
-  isLoading = false;
+  isLoading = signal(false);
   ngOnInit() {
     this.componentAlive = true;
     this.searchForm = new FormGroup({
@@ -31,13 +31,13 @@ export class UsersComponent implements OnInit {
         debounceTime(500),
         takeWhile(() => !!this.componentAlive),
         switchMap((query) => {
-          this.isLoading = true;
+          this.isLoading.set(true);
           return this.userService.searchUsers(query);
         })
       )
       .subscribe((users) => {
-        this.users = users;
-        this.isLoading = false;
+        this.users.set(users);
+        this.isLoading.set(false);
       });
   }
 }
