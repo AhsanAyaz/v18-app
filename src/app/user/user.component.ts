@@ -1,5 +1,4 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { IUser } from '../interfaces/user.interface';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -10,7 +9,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [CommonModule, UserCardComponent, LoaderComponent, RouterModule],
+  imports: [UserCardComponent, LoaderComponent, RouterModule],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
 })

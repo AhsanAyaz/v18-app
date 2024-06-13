@@ -1,5 +1,4 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { IUser } from '../interfaces/user.interface';
 import { UserService } from '../services/user.service';
@@ -10,7 +9,7 @@ import { LoaderComponent } from '../components/loader/loader.component';
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, UserCardComponent, LoaderComponent],
+  imports: [ReactiveFormsModule, UserCardComponent, LoaderComponent],
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
