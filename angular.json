@@ -97,6 +97,13 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "repo": "git@github.com:AhsanAyaz/v18-app.git",
+            "baseHref": "/v18-app/"
+          }
         }
       }
     }
